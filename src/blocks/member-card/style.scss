@@ -1,0 +1,155 @@
+/**
+ * Block: Member Card
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-member-card {
+    .card-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+
+        .profile-image {
+            position: relative;
+            flex-shrink: 0;
+            width: 128px;
+            height: 128px;
+            margin-right: $spacer * 1.5;
+            background-color: $gray-300;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+            border: 0 solid transparent;
+            transition: $transition-base;
+    
+            &.is-hovered {
+                &::after {
+                    background-color: rgba($secondary,0.2);
+                }
+            }
+    
+            &::after {
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.04);
+                transition: $transition-base;
+            }
+        }
+    
+        .profile-content {
+            a {
+                align-self: flex-start;
+
+                &:not(.bio-link) {
+                    &:hover {
+                        color: $secondary;
+    
+                        &::after {
+                            background-color: $secondary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ldr-member-card {
+    &.is-member-card-horizontal {
+        max-width: 530px;
+
+        .card-content {
+            display: flex!important;
+            flex-direction: row!important;
+            justify-content: flex-start!important;
+            align-items: center!important;
+            max-width: 560px!important;
+
+            &.text-start {
+                align-items: flex-start!important;
+            }
+
+            .profile-image {
+                margin-right: $spacer * 1.5!important;
+            }
+
+            .profile-content {
+                a {
+                    align-self: flex-start!important;
+                }
+            }
+
+            @include media-breakpoint-down(lg) {
+                display: flex!important;
+                flex-direction: column!important;
+                justify-content: flex-start!important;
+
+                &:not(.text-start) {
+                    align-items: center!important;
+                    text-align: center!important;
+
+                    .profile-content {
+                        a {
+                            align-self: center!important;
+                        }
+                    }
+                }
+
+                .profile-image {
+                    margin-right: 0!important;
+                    margin-bottom: $spacer * 1.5!important;
+                }
+            }
+        }
+    }
+}
+
+.ldr-member-card {
+    &.is-member-card-vertical {
+        .card-content {
+            display: flex!important;
+            flex-direction: column!important;
+            justify-content: flex-start!important;
+            align-items: center!important;
+            text-align: center!important;
+    
+            .profile-image {
+                margin-right: 0!important;
+                margin-bottom: $spacer * 1.5!important;
+            }
+         
+            .profile-content {
+                a {
+                    align-self: center!important;
+                }
+            }
+        }
+    }
+}
+
+.wp-block-column {
+    .wp-block-acf-member-card {
+        display: flex;
+    }
+
+    .acf-block-preview {
+        .ldr-member-card {
+            &.is-member-card-horizontal {
+                max-width: 100% !important;
+
+                .card-content {
+                    max-width: 100% !important;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+/**
+ * Block: Breadcrumbs
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-breadcrumbs {
+    color: $gray-500;
+    
+    a {
+        color: $gray-500;
+
+        &::after {
+            background-color: $gray-500!important;
+        }
+
+        &:hover {
+            color: $secondary;
+
+            &::after {
+                background-color: $secondary!important;
+            }
+        }
+    }
+}

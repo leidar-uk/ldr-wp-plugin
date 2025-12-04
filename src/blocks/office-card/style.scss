@@ -1,0 +1,114 @@
+/**
+ * Block: Office Card
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import "../../scss/plugins/leaflet-map";
+
+.ldr-office-card {
+    @extend %leaflet-map;
+
+    .card {
+        .card-img-top {
+            position: relative;
+            width: 100%;
+            min-height: 50px;
+            background-color: $gray-300;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        .card-map-top {
+            position: relative;
+            width: 100%;
+            min-height: 50px;
+            overflow: hidden;
+
+            .map-container {
+                width: 100%;
+                min-height: 50px;
+                background-color: yellow;
+            }
+        }
+
+        &.is-row {
+            .card-img-top,
+            .card-map-top {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: calc(.375rem - 1px);
+            }
+        }
+
+        a {
+            &:hover {
+                &:not(.btn) {
+                    color: $secondary;
+                }
+            }
+
+            &::after {
+                display: none!important;
+            }
+        }
+
+        .contact-avatar {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            background-color: $gray-300;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+
+            &.is-hovered {
+                &::after {
+                    background-color: rgba($secondary,0.2);
+                }
+            }
+    
+            &::after {  
+                content: '';
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.04);
+                transition: $transition-base;
+            }
+        }
+    }
+}
+
+// Office card in the .wp-block-columns
+
+.wp-block-columns {
+	@include media-breakpoint-down(xxl) {
+		&:not(.is-not-stacked-on-mobile) {
+			> .wp-block-column {
+				.ldr-office-card {
+                    .contact-details {
+                        flex-direction: column!important;
+                        align-items: flex-start!important;
+                    }
+                }
+			}
+		}
+	}
+}
+
+// Editor
+
+.acf-block-preview {
+    .ldr-office-card {
+        .card {
+            max-width: 100%;
+            margin-top: 0;
+        }
+    }
+}

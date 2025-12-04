@@ -1,0 +1,17 @@
+/**
+ * Block: Post Meta
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-post-meta {
+    position: relative;
+    font-size: $font-size-sm;
+}
+
+.acf-block-preview {
+    .ldr-post-meta {
+        position: relative;
+    }
+}

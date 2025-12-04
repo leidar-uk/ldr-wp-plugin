@@ -1,0 +1,19 @@
+/**
+ * Block: Office Slider
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../../scss/plugins/glide';
+
+.ldr-office-slider {
+    position: relative;
+    @extend %glide-core;
+}
+
+.acf-block-preview {
+    .ldr-office-slider {
+        position: relative;
+        @extend %glide-core;
+    }
+}

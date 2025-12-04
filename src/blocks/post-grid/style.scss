@@ -1,0 +1,96 @@
+/**
+ * Block: Post Grid
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../post-card/style';
+
+.ldr-post-grid {
+    .grid-filter {
+        button {
+            &:not(.dropdown-toggle) {
+                &:hover {
+                    color: $white;
+                }
+            }
+
+            &.dropdown-toggle {
+                box-shadow: none!important;
+            }
+        }
+
+        ul {
+            button {
+                &:not(.dropdown-toggle) {
+                    &:hover {
+                        color: $secondary;
+                    }
+                }
+            }
+        }
+    }
+
+    .grid-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @include media-breakpoint-up(md) {
+            justify-content: flex-start;
+        }
+
+        @extend .ldr-post-card;
+
+        > .ldr-post-card {
+            display: flex;
+            width: 100%;
+            margin-bottom: 0;
+            padding: $spacer;
+
+            > .card {
+                width: 100%;
+            }
+
+            @include media-breakpoint-up(md) {
+                width: 50%;
+            }
+
+            @include media-breakpoint-up(lg) {
+                width: 33.333%;
+            }
+        }
+    }
+
+    &.alignwide {
+        .grid-items {
+            > .ldr-post-card {
+                @include media-breakpoint-up(md) {
+                    width: 50%;
+                }
+    
+                @include media-breakpoint-up(lg) {
+                    width: 33.333%;
+                }
+    
+                @include media-breakpoint-up(xl) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+    .load-more {
+        .loader {
+            .spinner-border {
+                border-width: 2px!important;
+            }
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-post-grid {
+        position: relative;
+    }
+}

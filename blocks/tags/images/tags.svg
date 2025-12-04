@@ -1,0 +1,19 @@
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#1E1E1E;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#1E1E1E;}
+	.st3{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<path class="st2" d="M13.5,10.7v3c0,0.8-0.7,1.5-1.5,1.5h0c-0.8,0-1.5-0.7-1.5-1.5v-3c0-0.8,0.7-1.5,1.5-1.5h0
+		C12.8,9.2,13.5,9.9,13.5,10.7z"/>
+	<path class="st2" d="M13.5,17.7L13.5,17.7c0,0.8-0.7,1.5-1.5,1.5h0c-0.8,0-1.5-0.7-1.5-1.5v0c0-0.8,0.7-1.5,1.5-1.5h0
+		C12.8,16.2,13.5,16.9,13.5,17.7z"/>
+</g>
+<g>
+	<path class="st2" d="M12,5.8l8.5,14.4h-17L12,5.8 M12,1.8L0,22.2h24L12,1.8L12,1.8z"/>
+</g>
+</svg>

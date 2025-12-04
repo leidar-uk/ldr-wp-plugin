@@ -1,0 +1,14 @@
+/**
+ * Block: Alert
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-alert {
+    font-weight: 300;
+
+    strong {
+        font-weight: 700;
+    }
+}

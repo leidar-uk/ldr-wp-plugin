@@ -1,0 +1,32 @@
+/**
+ * Block: Office Slider
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../../scss/plugins/glide';
+
+.ldr-post-slider {
+    position: relative;
+    @extend %glide-core;
+
+    &.arrow-navigation-off {
+        .glide {
+            padding-right: 0!important;
+            padding-left: 0!important;
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-post-slider {
+        position: relative;
+        @extend %glide-core;
+
+        .ldr-block {
+            .card {
+                height: 100%!important;
+            }
+        }
+    }
+}

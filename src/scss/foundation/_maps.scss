@@ -1,0 +1,43 @@
+// Maps overrides
+
+// Colors
+$custom-colors: (
+    'primary': $primary,
+    'secondary': $secondary,
+    'tertiary': $tertiary,
+    'gold': $gold,
+    'mint': $mint,
+    'brick': $brick,
+    'gray': $gray,
+    'light-gray': $light-gray,
+    'txt': $txt,
+);
+
+$social-colors: (
+    'youtube': $youtube,
+    'twitter': $twitter,
+    'linkedin': $linkedin,
+);
+
+$theme-colors: map-merge($theme-colors, map-merge($colors, map-merge($grays, map-merge($custom-colors, $social-colors))));
+
+// Spacing
+$prefixed-spacers: (
+    'sm': $spacer * 0.25,
+    'md': $spacer * 0.5,
+    'lg': $spacer,
+    'xl': $spacer * 1.5,
+    'xxl': $spacer * 3,
+);
+
+// Typography sizing
+$typography-sizing: (
+    'default': $spacer,
+    'small': $spacer * 0.875,
+    'normal': $spacer,
+    'medium': $spacer * 1.25,
+    'large': $spacer * 1.5,
+    'extra-large': $spacer * 1.75,
+    'huge': $spacer * 2,
+    'gigant': $spacer * 2.5,
+);

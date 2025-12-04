@@ -1,0 +1,19 @@
+/**
+ * Block: Team Slider
+ *
+ */
+ 
+@import '../../scss/foundation/bootstrap-core';
+@import '../../scss/plugins/glide';
+
+.ldr-team-slider {
+    position: relative;
+    @extend %glide-core;
+}
+
+.acf-block-preview {
+    .ldr-team-slider {
+        position: relative;
+        @extend %glide-core;
+    }
+}

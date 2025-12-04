@@ -1,0 +1,59 @@
+/**
+ * Block: Accordion
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-accordion {
+    .accordion {
+        border-radius: $spacer / 2;
+        &-button {
+            &:not(.collapsed) {
+                &::after {
+                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="rgb(173,181,189)"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+                }
+            }
+
+            &.has-subheader {
+                position: relative;
+                display: block;
+                font-size: $spacer * 1.25;
+
+                &[aria-expanded="true"] {
+                    > div {
+                        border-top-color: $gray-500;
+                    }
+                }
+
+                &::after {
+                    position: absolute;
+                    top: $spacer;
+                    right: 20px;
+                }
+
+                > div {
+                    font-size: $spacer!important;
+                    border-top: 1px solid $light-gray;
+                    margin-top: $spacer / 2;
+                    padding-top: $spacer / 2;
+                }
+            }
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-accordion {
+        .accordion {
+            border-radius: $spacer / 2;
+            &-button {
+                &:not(.collapsed) {
+                    &::after {
+                        background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="rgb(173,181,189)"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+                    }
+                }
+            }
+        }
+    }
+}

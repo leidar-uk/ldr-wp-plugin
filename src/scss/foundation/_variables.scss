@@ -1,0 +1,102 @@
+// Theme custom variables
+
+// @import "~bootstrap/scss/variables";
+
+$enable-caret: true;
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: false;
+$enable-transitions: true;
+$enable-reduced-motion: true;
+$enable-smooth-scroll: true;
+$enable-grid-classes: true;
+$enable-button-pointers: true;
+$enable-rfs: true;
+$enable-validation-icons: true;
+$enable-negative-margins: true;
+$enable-deprecation-messages: true;
+$enable-important-utilities: true;
+
+$spacer: 1rem;
+
+// Grayscale vars
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Color vars
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+$primary: #1E1D2F;
+$secondary: #6096BA;
+$tertiary: #C0D5E3;
+$gold: #DBC71F;
+$mint: #16CC9C;
+$brick: #CC4217;
+$gray: #9E9E9E;
+$light-gray: #E8E8E8;
+$white: #FFFFFF;
+$black: #000000;
+$txt: $black;
+
+$youtube: #cd201f;
+$twitter: #1da1f2;
+$linkedin: #0077b5;
+
+// Fonts
+$font-family-sans-serif: 'Barlow', sans-serif;
+$font-family-serif: 'Inria Serif', serif;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-family-base: $font-family-sans-serif;
+
+// Body
+$body-bg: $white;
+$body-color: $gray-700;
+
+// Links
+$link-decoration: none;
+$link-color: $txt;
+
+// Buttons
+$btn-focus-width: 1px;
+// $btn-border-radius: $border-radius-sm;
+
+// Forms
+// $input-border-radius: $input-border-radius-sm;
+
+// Navbar
+$navbar-dark-color: $primary;
+$navbar-dark-hover-color: $secondary;
+$navbar-dark-active-color: $secondary;
+$navbar-toggler-padding-x: $spacer * 0.25;
+$navbar-toggler-focus-width: 0;
+$navbar-brand-height: $spacer;
+
+// Dropdown
+$dropdown-spacer: $spacer/2;
+$dropdown-link-hover-bg: transparent;
+$dropdown-link-active-bg: transparent;
+
+// Alerts
+$alert-border-radius: 0;
+$alert-border-width: 0;
+
+// Accordion
+$accordion-button-active-bg: $gray-300;
+$accordion-button-active-color: $gray-500;
+$accordion-button-focus-box-shadow: none;

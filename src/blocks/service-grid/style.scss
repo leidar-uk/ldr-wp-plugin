@@ -1,0 +1,78 @@
+/**
+ * Block: Post Grid
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../service-card/style';
+
+.ldr-service-grid {
+    .grid-filter {
+        button {
+            &:not(.dropdown-toggle) {
+                &:hover {
+                    color: $secondary;
+                }
+            }
+
+            &.dropdown-toggle {
+                box-shadow: none!important;
+            }
+        }
+    }
+
+    .grid-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @include media-breakpoint-up(md) {
+            justify-content: flex-start;
+        }
+
+        @extend .ldr-service-card;
+
+        > .ldr-service-card {
+            display: flex;
+            width: 100%;
+            margin-bottom: 0;
+            padding: $spacer;
+
+            > .card {
+                width: 100%;
+            }
+
+            @include media-breakpoint-up(md) {
+                width: 50%;
+            }
+
+            @include media-breakpoint-up(lg) {
+                width: 33.333%;
+            }
+        }
+    }
+
+    &.alignwide {
+        .grid-items {
+            > .ldr-service-card {
+                @include media-breakpoint-up(md) {
+                    width: 50%;
+                }
+    
+                @include media-breakpoint-up(lg) {
+                    width: 33.333%;
+                }
+    
+                @include media-breakpoint-up(xl) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-service-grid {
+        position: relative;
+    }
+}

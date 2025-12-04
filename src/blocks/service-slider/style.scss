@@ -1,0 +1,32 @@
+/**
+ * Block: Service Slider
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../../scss/plugins/glide';
+
+.ldr-service-slider {
+    position: relative;
+    @extend %glide-core;
+
+    &.arrow-navigation-off {
+        .glide {
+            padding-right: 0!important;
+            padding-left: 0!important;
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-service-slider {
+        position: relative;
+        @extend %glide-core;
+
+        .ldr-block {
+            .card {
+                height: 100%!important;
+            }
+        }
+    }
+}

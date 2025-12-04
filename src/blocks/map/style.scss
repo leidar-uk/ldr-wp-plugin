@@ -1,0 +1,11 @@
+/**
+ * Block: Map
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import "../../scss/plugins/leaflet-map";
+
+.ldr-map {
+    @extend %leaflet-map;
+}

@@ -1,0 +1,17 @@
+/**
+ * Bootstrap foundation
+ */
+@use "sass:map";
+@use "sass:meta";
+
+// 1. Include Bootstrap core files
+@import "bootstrap-core";
+
+// 2. Include Bootstrap component files
+@import "bootstrap-components";
+
+// 3. Bootstrap icons
+@import "bootstrap-icons";
+
+// 4. Miscellaneous
+@import "~leaflet/dist/leaflet";

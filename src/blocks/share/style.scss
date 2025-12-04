@@ -1,0 +1,36 @@
+/**
+ * Block: Share
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-share {
+    position: relative;
+
+    .btn {
+        &::after {
+            display: none;
+        }
+
+        &:hover {
+            color: $secondary!important;
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-share {
+        position: relative;
+    
+        .btn {
+            &::after {
+                display: none;
+            }
+    
+            &:hover {
+                color: $secondary!important;
+            }
+        }
+    }
+}

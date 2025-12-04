@@ -1,0 +1,6 @@
+node_modules
+dist
+theme
+.DS_Store
+assets/.DS_Store
+template-parts/blocks/.DS_Store

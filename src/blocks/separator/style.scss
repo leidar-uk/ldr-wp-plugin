@@ -1,0 +1,17 @@
+/**
+ * Block: Separator
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-separator {
+    hr {
+        position: relative;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid $gray-400;
+        margin: 0;
+        opacity: 1!important;
+    }
+}

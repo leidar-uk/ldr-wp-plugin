@@ -1,0 +1,55 @@
+/**
+ * Block: Service Card
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-service-card {
+    .card {
+        .card-img-top {
+            position: relative;
+            width: 100%;
+            min-height: 50px;
+            background-color: $gray-300;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        &.is-row {
+            .card-img-top {
+                border-top-right-radius: 0;
+                border-bottom-left-radius: calc(.375rem - 1px);
+            }
+        }
+
+        a {
+            &:hover {
+                &:not(.btn) {
+                    color: $secondary;
+                }
+            }
+
+            &::after {
+                display: none!important;
+            }
+        }
+
+        .card-title {
+            font-family: $font-family-serif;
+        }
+    }
+}
+
+// Editor
+
+.acf-block-preview {
+    .ldr-service-card {
+        .card {
+            max-width: 100%;
+            margin-top: 0;
+        }
+    }
+}

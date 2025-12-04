@@ -1,0 +1,71 @@
+/**
+ * Block: Box
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../../scss/core/theme';
+
+.ldr-box {
+    position: relative;
+    background-color: $gray-300;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+
+    .color-overlay {
+        z-index: 1;
+    }
+
+    .ldr-block {
+        margin-bottom: 0;
+    }
+
+    .container,
+    .container-fluid {
+        z-index: 2;
+
+        > * {
+            width: 100%;
+        }
+    }
+
+    .container-fluid {
+        .ldr-block {
+            .container {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-box {
+        .ldr-block {
+            margin-bottom: 0;
+        }
+
+        /* .container,
+        .container-fluid {
+            .block-editor-block-list__layout {
+                > .wp-block {
+                    &:not(.block-list-appender) {
+                        margin-top: 0;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        } */
+
+        .container-fluid {
+            .block-editor-block-list__layout {
+                > .wp-block {
+                    &:not(.block-list-appender) {
+                        max-width: 100%!important;
+                    }
+                }
+            }
+        }
+    }
+}

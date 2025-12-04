@@ -1,0 +1,209 @@
+/**
+ * Block: Team Grid
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../member-card/style';
+
+.ldr-team-grid {
+    .grid-filter {
+        button {
+            &:not(.dropdown-toggle) {
+                &:hover {
+                    color: $secondary;
+                }
+            }
+
+            &.dropdown-toggle {
+                box-shadow: none!important;
+            }
+        }
+    }
+
+    .grid-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        @include media-breakpoint-up(md) {
+            justify-content: flex-start;
+        }
+
+        @extend .ldr-member-card;
+
+        > .ldr-member-card {
+            width: 100%;
+            margin-bottom: $spacer * 3;
+            padding: $spacer;
+
+            @include media-breakpoint-up(md) {
+                width: 50%;
+            }
+
+            @include media-breakpoint-up(lg) {
+                width: 33.333%;
+            }
+
+            @include media-breakpoint-up(xl) {
+                width: 25%;
+            }
+        }
+    }
+
+    &.is-member-card-horizontal {
+        .grid-items {
+            justify-content: center;
+
+            > .ldr-member-card {
+                width: 100%;
+                max-width: 530px;
+
+                .card-content {
+                    display: flex!important;
+                    flex-direction: row!important;
+                    justify-content: flex-start!important;
+                    align-items: center!important;
+                    max-width: 560px!important;
+        
+                    .profile-image {
+                        margin-right: $spacer * 1.5!important;
+                    }
+        
+                    .profile-content {
+                        text-align: left;
+
+                        a {
+                            align-self: flex-start!important;
+                        }
+                    }
+        
+                    @include media-breakpoint-down(md) {
+                        display: flex!important;
+                        flex-direction: column!important;
+                        justify-content: flex-start!important;
+                        align-items: center!important;
+                        text-align: center!important;
+        
+                        .profile-image {
+                            margin-right: 0!important;
+                            margin-bottom: $spacer * 1.5!important;
+                        }
+                    
+                        .profile-content {
+                            a {
+                                align-self: center!important;
+                            }
+                        }
+                    }
+                }
+    
+                @include media-breakpoint-up(xl) {
+                    width: 50%;
+                }
+            }
+        }
+    }
+    
+    &.is-member-card-vertical {
+        .grid-items {
+            > .ldr-member-card {
+                width: 100%;
+
+                .card-content {
+                    display: flex!important;
+                    flex-direction: column!important;
+                    justify-content: flex-start!important;
+                    align-items: center!important;
+                    text-align: center!important;
+            
+                    .profile-image {
+                        margin-right: 0!important;
+                        margin-bottom: $spacer * 1.5!important;
+                    }
+                 
+                    .profile-content {
+                        text-align: center;
+
+                        a {
+                            align-self: center!important;
+                        }
+                    }
+                }
+
+                @include media-breakpoint-up(md) {
+                    width: 50%;
+                }
+    
+                @include media-breakpoint-up(lg) {
+                    width: 33.333%;
+                }
+    
+                @include media-breakpoint-up(xl) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+    &.has-hidden-contact-details {
+        .grid-items {
+            > .ldr-member-card {
+                .contact-details {
+                    display: none!important;
+                }
+            }
+        }
+    }
+
+    &.has-profile-image {
+        &-sm {
+            .grid-items {
+                > .ldr-member-card {
+                    .profile-image {
+                        width: 128px!important;
+                        height: 128px!important;
+                    }
+                }
+            }
+        }
+
+        &-md {
+            .grid-items {
+                > .ldr-member-card {
+                    .profile-image {
+                        width: 180px!important;
+                        height: 180px!important;
+                    }
+                }
+            }
+        }
+
+        &-lg {
+            .grid-items {
+                > .ldr-member-card {
+                    .profile-image {
+                        width: 256px!important;
+                        height: 256px!important;
+                    }
+                }
+            }
+        }
+    }
+
+    &.hide-location {
+        .grid-items {
+            > .ldr-member-card {
+                .office-location {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-team-grid {
+        position: relative;
+    }
+}

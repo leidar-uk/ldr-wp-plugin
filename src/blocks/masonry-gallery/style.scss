@@ -1,0 +1,64 @@
+/**
+ * Block: Masonry Grid
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-masonry-gallery {
+    &::after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    &__items {
+        position: relative;
+
+        .sizer,
+        .item {
+            width: 100%;
+            float: left;
+    
+            @include media-breakpoint-up(sm) {
+                width: 50%;
+            }
+    
+            @include media-breakpoint-up(md) {
+                width: 33.333%;
+            }
+    
+            /* @include media-breakpoint-up(lg) {
+                width: 25%;
+            }
+    
+            @include media-breakpoint-up(xl) {
+                width: 33.333%;
+            } */
+    
+            @include media-breakpoint-up(xl) {
+                width: 25%;
+            }
+        }
+    
+        .item {
+            > .inner-wrapper {
+                img {
+                    display: block;
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+
+}
+
+.acf-block-preview {
+    .ldr-masonry-gallery {
+        &__items {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+        }
+    }
+}

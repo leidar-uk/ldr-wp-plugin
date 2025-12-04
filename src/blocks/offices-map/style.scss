@@ -1,0 +1,11 @@
+/**
+ * Block: Office Map
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import "../../scss/plugins/leaflet-map";
+
+.ldr-offices-map {
+    @extend %leaflet-map;
+}

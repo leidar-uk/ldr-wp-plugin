@@ -1,0 +1,21 @@
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#1E1E1E;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st2{fill:#1E1E1E;}
+	.st3{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st4{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<g>
+	<path class="st2" d="M12,2.2l10,4.2v14.9l-9.2-3.8c-0.2-0.1-0.5-0.2-0.8-0.2s-0.5,0.1-0.8,0.2L2,21.2V6.3L12,2.2 M12,0L0,5v19.2
+		l12-5l12,5V5L12,0L12,0z"/>
+</g>
+<line class="st1" x1="12" y1="1.5" x2="12" y2="17.7"/>
+<ellipse transform="matrix(0.6154 -0.7882 0.7882 0.6154 -6.2295 8.464)" class="st1" cx="5.6" cy="10.6" rx="1.6" ry="1"/>
+<ellipse transform="matrix(0.7737 -0.6336 0.6336 0.7737 -5.4866 15.1342)" class="st1" cx="18.4" cy="15.2" rx="1" ry="1.5"/>
+<polyline class="st1" points="6.8,10 12,7.8 18.4,11 18.4,14 "/>
+<polyline class="st1" points="17.2,14.7 12,12.1 5.6,14.7 5.6,16.7 1.6,18.6 "/>
+<polyline class="st1" points="16,9.6 16,6.8 22.3,9.6 "/>
+<line class="st1" x1="8.8" y1="13.7" x2="8.8" y2="19.2"/>
+</svg>

@@ -1,0 +1,21 @@
+/**
+ * Block: Tags
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-tags {
+    font-weight: 300;
+
+    span {
+        margin-right: $spacer/2;
+        font-weight: 500;
+    }
+
+    a {
+        &::after {
+            display: none;
+        }
+    }
+}
