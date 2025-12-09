@@ -104,7 +104,7 @@ $slider_data = [
 ];
 
 if( ! $hide_bullets ) {
-    $glide_className .= ' pb-5 mb-5';
+    $glide_className .= ' pb-5 mb-4';
 }
 
 if( ! empty( $block['anchor'] ) ) {
@@ -124,7 +124,7 @@ if( ! empty( $block['align'] ) ) {
 }
 
 ?>
-<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>" data-slider-settings='<?php echo json_encode( $slider_data ); ?>' data-is-static="<?php echo $is_static; ?>">
+<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className . ' px-3' ); ?>" data-slider-settings='<?php echo json_encode( $slider_data ); ?>' data-is-static="<?php echo $is_static; ?>">
     
     <div class="<?php echo $glide_className; ?>">
         <div class="glide__track" data-glide-el="track">
