@@ -103,6 +103,10 @@
 .ldr-post-grid .load-more .loader .spinner-border {
   border-width: 2px !important;
 }
+.ldr-post-grid .load-more p {
+  margin-bottom: 0;
+  display: inline;
+}
 
 .acf-block-preview .ldr-post-grid {
   position: relative;

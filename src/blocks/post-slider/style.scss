@@ -1,5 +1,5 @@
 /**
- * Block: Office Slider
+ * Block: Post Slider
  *
  */
 
@@ -16,6 +16,12 @@
             padding-left: 0!important;
         }
     }
+
+    .ldr-block {
+        .card {
+            background-color: transparent !important;
+        }
+    }
 }
 
 .acf-block-preview {
@@ -26,6 +32,7 @@
         .ldr-block {
             .card {
                 height: 100%!important;
+                background-color: transparent !important;
             }
         }
     }

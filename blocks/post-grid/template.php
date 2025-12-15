@@ -75,14 +75,7 @@ if( ! empty( $block['align'] ) ) {
         <div class="grid-items"></div>
         <?php if( $posts_number > 0 ) : ?>
             <div class="d-flex justify-content-center align-items-center mt-5">
-                <button type="button" class="btn btn-lg btn-primary px-4 py-3 load-more">
-                    <div class="loader d-inline-block me-2 mb-0">
-                        <div class="spinner-border spinner-border-sm text-white" role="status">
-                            <span class="visually-hidden"><?php _e( 'Loading posts', 'ldr' ); ?>...</span>
-                        </div>
-                    </div>
-                    <?php esc_attr_e( 'Load more', 'ldr' ); ?>
-                </button>
+                <button type="button" class="btn btn-lg btn-primary px-4 py-3 load-more d-inline-block"><div class="loader d-inline-block me-2 mb-0"><div class="spinner-border spinner-border-sm text-white" role="status"><span class="visually-hidden"><?php _e( 'Loading posts', 'ldr' ); ?>...</span></div></div><?php _e( 'Load more', 'ldr' ); ?></button>
             </div>
         <?php else : ?>
             <div class="loader d-flex justify-content-center mt-5 mb-4">
