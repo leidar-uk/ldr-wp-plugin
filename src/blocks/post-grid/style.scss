@@ -29,6 +29,14 @@
                 }
             }
         }
+
+        .dropdown {
+            button {
+                +p {
+                    display: none;
+                }
+            }
+        }
     }
 
     .grid-items {

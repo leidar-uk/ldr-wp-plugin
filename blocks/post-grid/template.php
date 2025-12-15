@@ -51,24 +51,22 @@ if( ! empty( $block['align'] ) ) {
     <?php if( ! $hide_filters ) : ?>
         <div class="grid-filter hstack gap-2 py-3 mb-5 border border-start-0 border-end-0 justify-content-end px-3">
             <span class="fw-bold"><?php _e( 'Filter by category', 'ldr' ); ?></span>
-            <div class="dropdown">
-                <button class="btn btn-sm btn-ldr-primary dropdown-toggle" type="button" id="filterByCategory" data-bs-toggle="dropdown" aria-expanded="false">
-                    <?php _e( 'Show all', 'ldr' ); ?>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterByCategory">
-                    <li><button type="button" id="0" class="dropdown-item"><?php _e( 'Show all', 'ldr' ); ?></button></li>
-                    <?php foreach( $categories as $category ) : ?>
-                        <?php if( $category->slug !== 'article' ) : ?>
-                            <li><button type="button" id="<?php echo $category->term_id; ?>" data-slug="<?php echo $category->slug; ?>" class="dropdown-item"><?php echo $category->name; ?></button></li>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </ul>
-                <button class="btn btn-sm btn-ldr-primary ms-2 d-none reset-filter" type="button">
-                    <?php _e( 'Reset', 'ldr' ); ?>
-                </button>
-                <button class="btn btn-sm btn-ldr-primary ms-2 d-none copy-filtered-results" type="button">
-                    <?php _e( 'Copy to clipboard', 'ldr' ); ?>
-                </button>
+            <div class="dropdown d-flex flex-row justify-content-end align-items-center">
+                <div>
+                    <button class="btn btn-sm btn-ldr-primary dropdown-toggle" type="button" id="filterByCategory" data-bs-toggle="dropdown" aria-expanded="false"><?php _e( 'Show all', 'ldr' ); ?></button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="filterByCategory">
+                        <li><button type="button" id="0" class="dropdown-item"><?php _e( 'Show all', 'ldr' ); ?></button></li>
+                        <?php foreach( $categories as $category ) : ?>
+                            <?php if( $category->slug !== 'article' ) : ?>
+                                <li><button type="button" id="<?php echo $category->term_id; ?>" data-slug="<?php echo $category->slug; ?>" class="dropdown-item"><?php echo $category->name; ?></button></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+                <div class="d-flex flex-row justify-content-end align-items-center">
+                    <button class="btn btn-sm btn-ldr-primary ms-2 d-none reset-filter" type="button"><?php _e( 'Reset', 'ldr' ); ?></button>
+                    <button class="btn btn-sm btn-ldr-primary ms-2 d-none copy-filtered-results" type="button"><?php _e( 'Copy to clipboard', 'ldr' ); ?></button>
+                </div>
             </div>
         </div>
     <?php endif; ?>

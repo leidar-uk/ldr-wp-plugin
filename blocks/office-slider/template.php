@@ -89,7 +89,7 @@ if( ! empty( $block['align'] ) ) {
 }
 
 ?>
-<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>" data-slider-settings='<?php echo json_encode( $slider_data ); ?>'>
+<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className . ' px-4' ); ?>" data-slider-settings='<?php echo json_encode( $slider_data ); ?>'>
     
     <div class="<?php echo $glide_className; ?>">
         <div class="glide__track" data-glide-el="track">

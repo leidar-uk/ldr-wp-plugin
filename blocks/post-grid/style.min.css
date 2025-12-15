@@ -53,6 +53,9 @@
 .ldr-post-grid .grid-filter ul button:not(.dropdown-toggle):hover {
   color: #6096BA;
 }
+.ldr-post-grid .grid-filter .dropdown button + p {
+  display: none;
+}
 .ldr-post-grid .grid-items {
   display: flex;
   flex-wrap: wrap;
