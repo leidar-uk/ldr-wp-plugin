@@ -43,6 +43,8 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        margin-left: -(map-get($spacers, 3));
+        margin-right: -(map-get($spacers, 3));
 
         @include media-breakpoint-up(md) {
             justify-content: flex-start;
