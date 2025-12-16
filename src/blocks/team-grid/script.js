@@ -21,10 +21,10 @@ import gsap from 'gsap';
         
         const filterQuery = (el) => {
             const filter = parseInt(el.target.id);
-            gsap.to('.ldr-member-card', {
+            /* gsap.to('.ldr-member-card', {
                 autoAlpha: 0,
                 stagger: 0.1
-            });
+            }); */
             loader.classList.remove('d-none');
             if(filterToggle) {
                 filterToggle.innerText = el.target.innerText;
@@ -47,10 +47,10 @@ import gsap from 'gsap';
                     grid.innerHTML = result;
                     memberCards = [...document.querySelectorAll('.ldr-member-card')];
 
-                    gsap.from('.ldr-member-card', {
+                    /* gsap.from('.ldr-member-card', {
                         autoAlpha: 0,
                         stagger: 0.1
-                    });
+                    }); */
                     
                     memberCards.forEach((card) => {
                         const profileImage = card.querySelector('.profile-image');

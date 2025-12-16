@@ -20,8 +20,9 @@ $hide_filters = get_field( 'team_grid_hide_filter' );
 $filtered_members = (int) get_field( 'team_grid_filter_members' );
 $filtered_data = ! empty( $filtered_members ) ? ' data-filter="' . $filtered_members . '"' : '';
 $custom_selection = get_field( 'team_grid_select_members' );
-$selected_members = ! empty( $custom_selection ) ? " data-selected-members='" . json_encode( array_map( function( $n ) { return (int) $n; }, $custom_selection ) ) . "'" : '';
 $exclude_members = get_field( 'team_grid_exclude_members' );
+
+$selected_members = ! empty( $custom_selection ) ? " data-selected-members='" . json_encode( array_map( function( $n ) { return (int) $n; }, $custom_selection ) ) . "'" : '';
 $excluded_members = ! empty( $exclude_members ) ? " data-excluded-members='" . json_encode( array_map( function( $n ) { return (int) $n; }, $exclude_members ) ) . "'" : '';
 $hide_contact_details = get_field( 'team_grid_hide_contact_details' );
 $card_layout = get_field( 'team_grid_card_layout' );
