@@ -95,7 +95,7 @@ if( ! empty( $block['align'] ) ) {
             <?php if( ! $hide_role && ! $hide_office ) : ?>
                 <p class="mb-0 fst-italic">
                     <?php if( ! empty( $member_role ) ) : ?>
-                        <?php echo $member_role; ?>, <span class="office-location"><?php _e( 'based in', 'ldr' ); ?> <?php echo $member_office[0]->post_title; ?></span>
+                        <?php echo $member_role; ?> <span class="office-location"><?php _e( 'based in', 'ldr' ); ?> <?php echo $member_office[0]->post_title; ?></span>
                     <?php else : ?>
                         <span class="office-location"><?php echo $member_office[0]->post_title; ?></span>
                     <?php endif; ?>
