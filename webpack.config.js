@@ -29,7 +29,76 @@ function getBlockEntries() {
   return entries;
 }
 
-module.exports = {
+const sharedRules = [
+  {
+    test: /\.js$/,
+    exclude: /(node_modules)/,
+    use: {
+      loader: 'babel-loader',
+      options: {
+        presets: [ '@babel/preset-env' ]
+      }
+    }
+  },
+  {
+    test: /\.s?css$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      { loader: 'css-loader', options: { importLoaders: 1 } },
+      {
+        loader: 'postcss-loader',
+        options: {
+          postcssOptions: {
+            plugins: [ require('autoprefixer')() ]
+          }
+        }
+      },
+      {
+        loader: 'sass-loader',
+        options: {
+          sassOptions: {
+            loadPaths: [
+              path.resolve(__dirname, 'src/scss'),
+              path.resolve(__dirname, 'node_modules')
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    test: /\.(png|jpe?g|gif|svg|woff2?|ttf|eot)$/i,
+    type: 'asset/resource',
+    generator: {
+      filename: 'assets/img/[name][ext]'
+    }
+  }
+];
+
+const externalLibs = {
+  jquery: 'jQuery'
+};
+
+const themeConfig = {
+  entry: {
+    main: './src/js/main.js',
+  },
+  output: {
+    path: path.resolve(__dirname),
+    filename: 'assets/js/[name].min.js'
+  },
+  module: {
+    rules: sharedRules
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'assets/css/[name].min.css'
+    })
+  ],
+  externals: externalLibs
+};
+
+const blocksConfig = {
   entry: getBlockEntries(),
   output: {
     path: path.resolve(__dirname),
@@ -37,58 +106,14 @@ module.exports = {
     clean: false
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [ '@babel/preset-env' ]
-          }
-        }
-      },
-      {
-        test: /\.s?css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                plugins: [ require('autoprefixer')() ]
-              }
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                loadPaths: [
-                  path.resolve(__dirname, 'src/scss'),
-                  path.resolve(__dirname, 'node_modules')
-                ]
-              }
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg|woff2?|ttf|eot)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/img/[name][ext]'
-        }
-      }
-    ]
+    rules: sharedRules
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'blocks/[name]/style.min.css'
     })
   ],
-  externals: {
-    jquery: 'jQuery'
-  }
+  externals: externalLibs
 };
+
+module.exports = [themeConfig, blocksConfig];

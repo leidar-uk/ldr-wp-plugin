@@ -671,6 +671,9 @@
   min-height: 50px;
   background-color: yellow;
 }
+.ldr-office-card .card .card-body p {
+  font-size: 1rem;
+}
 .ldr-office-card .card.is-row .card-img-top,
 .ldr-office-card .card.is-row .card-map-top {
   border-top-right-radius: 0;

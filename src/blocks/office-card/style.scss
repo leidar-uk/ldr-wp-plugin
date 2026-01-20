@@ -34,6 +34,12 @@
             }
         }
 
+        .card-body {
+            p {
+                font-size: 1rem;
+            }
+        }
+
         &.is-row {
             .card-img-top,
             .card-map-top {

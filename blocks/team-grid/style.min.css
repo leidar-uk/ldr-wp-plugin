@@ -49,6 +49,9 @@
   background-color: rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease-in-out;
 }
+.ldr-member-card .card-content .profile-content p, .ldr-team-grid .grid-items .card-content .profile-content p {
+  font-size: 1rem;
+}
 .ldr-member-card .card-content .profile-content a, .ldr-team-grid .grid-items .card-content .profile-content a {
   align-self: flex-start;
 }
