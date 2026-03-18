@@ -399,11 +399,6 @@ class Post_Grid_Block {
             'conditional_logic' => [
                 [
                     [
-                        'field' => 'field_post_grid_hide_filter',
-                        'operator' => '==',
-                        'value' => 1
-                    ],
-                    [
                         'field' => 'field_post_grid_select_posts',
                         'operator' => '==empty',
                         'value' => ''
