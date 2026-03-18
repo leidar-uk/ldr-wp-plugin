@@ -442,12 +442,72 @@ class Post_Slider_Block {
             'conditional_logic' => [
                 [
                     [
+                        'field' => 'field_post_slider_exclude_posts',
+                        'operator' => '!=',
+                        'value' => 1,
+                    ],
+                    [
                         'field' => 'field_post_slider_only_sticky_posts',
                         'operator' => '!=',
                         'value' => 1,
                     ],
                     [
                         'field' => 'field_post_slider_filter_by_author',
+                        'operator' => '!=',
+                        'value' => 1,
+                    ],
+                    [
+                        'field' => 'field_post_slider_filter_by_category',
+                        'operator' => '!=',
+                        'value' => 1,
+                    ],
+                    [
+                        'field' => 'field_post_slider_is_static',
+                        'operator' => '!=',
+                        'value' => 1
+                    ]
+                ]
+            ],
+            'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ],
+            'default_value' => '',
+            'multiple' => 1,
+            'choices' => $this->prepare_query_args( [ 
+                'ignore_sticky_posts' => true,
+                'post__not_in' => $sticky_posts,
+            ] ),
+            'allow_null' => 1,
+            'ui' => 1,
+            'ajax' => 1,
+            'placeholder' => __( 'Type or select', 'ldr' ),
+        ];
+
+    }
+
+    // Exclude posts
+    protected function _acf_field_post_slider_exclude_posts() {
+
+        $sticky_posts = get_option( 'sticky_posts' );
+
+        return [
+            'key' => 'field_post_slider_exclude_posts',
+            'label' => __( 'Exclude posts', 'ldr' ),
+            'name' => 'post_slider_exclude_posts',
+            'type' => 'select',
+            'instructions' => __( 'Excludes selected posts.', 'ldr' ),
+            'required' => 0,
+            'conditional_logic' => [
+                [
+                    [
+                        'field' => 'field_post_slider_select_posts',
+                        'operator' => '!=',
+                        'value' => 1,
+                    ],
+                    [
+                        'field' => 'field_post_slider_only_sticky_posts',
                         'operator' => '!=',
                         'value' => 1,
                     ],

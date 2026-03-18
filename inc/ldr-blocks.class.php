@@ -41,6 +41,23 @@ class Blocks {
     }
 
     /**
+     * Prepares theme data for use in front-end
+     * @param array $data
+     * @return array
+     */
+    public function prepare_theme_data_object( $data = [] ) {
+
+        $defaults = [
+            'homeUrl' => home_url(),
+            'themeUri' => get_template_directory_uri(),
+            'wpAjax' => admin_url( 'admin-ajax.php' ),
+        ];
+
+        return array_merge( $defaults, $data );
+
+    }
+
+    /**
      * Load all custom block classes from plugin/blocks/*
      */
     public function load_custom_acf_blocks() {

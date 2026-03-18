@@ -100,6 +100,7 @@ class Post_Grid_Block {
         $filter = (int) $_POST['filter'];
         $posts_number = (int) $_POST['postsNumber'];
         $custom_selection = (array) $_POST['customSelection'];
+        $excluded_posts = (array) $_POST['excludedPosts'];
         $card_settings = (array) $_POST['cardSettings'];
         $exclude_sticky = (bool) $_POST['excludeSticky'];
         $sticky_posts = get_option( 'sticky_posts' );
@@ -117,8 +118,20 @@ class Post_Grid_Block {
             $args['orderby'] = 'post__in';
         }
 
+        if( ! empty( $excluded_posts ) ) {
+            $args['post__not_in'] = $excluded_posts;
+
+            if( $exclude_sticky ) {
+                $args['post__not_in'] = array_merge($sticky_posts, $excluded_posts);
+            }
+        }
+
         if( $exclude_sticky ) {
             $args['post__not_in'] = $sticky_posts;
+
+            if( ! empty( $excluded_posts ) ) {
+                $args['post__not_in'] = array_merge($sticky_posts, $excluded_posts);
+            }
         }
 
         $posts = array_map( function( $n ) use( $card_settings ) {
@@ -344,6 +357,11 @@ class Post_Grid_Block {
                         'field' => 'field_post_grid_hide_filter',
                         'operator' => '==',
                         'value' => 1
+                    ],
+                    [
+                        'field' => 'field_post_grid_exclude_posts',
+                        'operator' => '==empty',
+                        'value' => ''
                     ]
                 ]
             ],
@@ -362,6 +380,51 @@ class Post_Grid_Block {
             'ui' => 1,
             'ajax' => 1,
             'placeholder' => __( 'Type name or select', 'ldr' ),
+        ];
+
+    }
+
+    // Exclude posts
+    protected function _acf_field_post_grid_exclude_posts() {
+
+        $sticky_posts = get_option( 'sticky_posts' );
+
+        return [
+            'key' => 'field_post_grid_exclude_posts',
+            'label' => __( 'Exclude posts', 'ldr' ),
+            'name' => 'post_grid_exclude_posts',
+            'type' => 'select',
+            'instructions' => __( 'Excludes selected posts.', 'ldr' ),
+            'required' => 0,
+            'conditional_logic' => [
+                [
+                    [
+                        'field' => 'field_post_grid_hide_filter',
+                        'operator' => '==',
+                        'value' => 1
+                    ],
+                    [
+                        'field' => 'field_post_grid_select_posts',
+                        'operator' => '==empty',
+                        'value' => ''
+                    ]
+                ]
+            ],
+            'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ],
+            'default_value' => '',
+            'multiple' => 1,
+            'choices' => $this->prepare_query_args( [ 
+                'ignore_sticky_posts' => true,
+                'post__not_in' => $sticky_posts,
+            ] ),
+            'allow_null' => 1,
+            'ui' => 1,
+            'ajax' => 1,
+            'placeholder' => __( 'Type or select', 'ldr' ),
         ];
 
     }

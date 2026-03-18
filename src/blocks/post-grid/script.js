@@ -10,6 +10,7 @@ import gsap from 'gsap';
         const block = el.querySelector('.acf-block-preview') ? el.querySelector('.ldr-post-grid') : el;
         const cardSettings = (block.dataset && block.dataset.cardSettings && JSON.parse(block.dataset.cardSettings));
         const customSelection = (block.dataset && block.dataset.selectedPosts && JSON.parse(block.dataset.selectedPosts)) || [];
+        const excludedPosts = (block.dataset && block.dataset.excludedPosts && JSON.parse(block.dataset.excludedPosts)) || [];
         const filters = block.querySelector('.ldr-post-grid .grid-filter');
         const filterBtns = filters && filters.querySelectorAll('.ldr-post-grid .dropdown-item');
         const resetFilterBtn = block.querySelector('.reset-filter');
@@ -95,6 +96,7 @@ import gsap from 'gsap';
                     action: 'load_posts',
                     filter: currentFilter,
                     customSelection: customSelection,
+                    excludedPosts: excludedPosts,
                     cardSettings: cardSettings,
                     excludeSticky: excludeSticky,
                     postsNumber: postsNumber,

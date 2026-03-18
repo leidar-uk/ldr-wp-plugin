@@ -37,6 +37,7 @@ $filter_by_multiple_categories = get_field( 'post_slider_select_in_multiple_cate
 $filter_by_category = get_field( 'post_slider_filter_by_category' );
 $selected_categories = get_field( 'post_slider_select_categories' );
 $selected_posts = get_field( 'post_slider_select_posts' );
+$excluded_posts = get_field( 'post_slider_exclude_posts' );
 
 if( ! empty( $only_sticky ) ) {
     $post_args['ignore_sticky_posts'] = false;
@@ -61,6 +62,10 @@ if( ! empty( $filter_by_category ) && ! empty( $selected_categories ) ) {
     } else {
         $post_args['category__and'] = $selected_categories;
     }
+}
+
+if( ! empty( $excluded_posts ) ) {
+    $post_args['post__not_in'] = $excluded_posts;
 }
 
 $posts = get_posts( $post_args );

@@ -22,6 +22,8 @@ $filtered_posts = (int) get_field( 'post_grid_filter_posts' );
 $filtered_data = ! empty( $filtered_posts ) ? ' data-filter="' . $filtered_posts . '"' : '';
 $custom_selection = get_field( 'post_grid_select_posts' );
 $selected_posts = ! empty( $custom_selection ) ? " data-selected-posts='" . json_encode( array_map( function( $n ) { return (int) $n; }, $custom_selection ) ) . "'" : '';
+$omit_posts = get_field( 'post_grid_exclude_posts' );
+$excluded_posts = ! empty( $omit_posts ) ? " data-excluded-posts='" . json_encode( array_map( function( $n ) { return (int) $n; }, $omit_posts ) ) . "'" : '';
 $exclude_sticky_posts = (int) get_field( 'post_grid_exclude_sticky_posts' );
 
 $card_settings = [
@@ -47,7 +49,7 @@ if( ! empty( $block['align'] ) ) {
 }
 
 ?>
-<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>"<?php echo $filtered_data; ?><?php echo $selected_posts; ?> data-card-settings='<?php echo json_encode( $card_settings ); ?>' data-exclude-sticky='<?php echo $exclude_sticky_posts; ?>' data-posts-number="<?php echo $posts_number; ?>">
+<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>"<?php echo $filtered_data; ?><?php echo $selected_posts; ?> data-card-settings='<?php echo json_encode( $card_settings ); ?>' data-exclude-sticky='<?php echo $exclude_sticky_posts; ?>' <?php echo $excluded_posts; ?> data-posts-number="<?php echo $posts_number; ?>">
     <?php if( ! $hide_filters ) : ?>
         <div class="grid-filter hstack gap-2 py-3 mb-5 border border-start-0 border-end-0 justify-content-end px-3">
             <span class="fw-bold"><?php _e( 'Filter by category', 'ldr' ); ?></span>
