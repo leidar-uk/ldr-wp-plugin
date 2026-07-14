@@ -1,0 +1,77 @@
+/**
+ * Block: Expertise Grid
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+@import '../expertise-card/style';
+
+.ldr-expertise-grid {
+    .grid-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: -(map-get($spacers, 3));
+        margin-right: -(map-get($spacers, 3));
+
+        @include media-breakpoint-up(md) {
+            justify-content: flex-start;
+        }
+
+        > .ldr-expertise-card {
+            display: flex;
+            width: 100%;
+            margin-bottom: 0;
+            padding: $spacer;
+
+            > .card {
+                width: 100%;
+            }
+
+            @include media-breakpoint-up(md) {
+                width: 50%;
+            }
+
+            @include media-breakpoint-up(lg) {
+                width: 33.333%;
+            }
+        }
+    }
+
+    &.alignwide {
+        .grid-items {
+            > .ldr-expertise-card {
+                @include media-breakpoint-up(md) {
+                    width: 50%;
+                }
+    
+                @include media-breakpoint-up(lg) {
+                    width: 33.333%;
+                }
+    
+                @include media-breakpoint-up(xl) {
+                    width: 25%;
+                }
+            }
+        }
+    }
+
+    .load-more {
+        .loader {
+            .spinner-border {
+                border-width: 2px!important;
+            }
+        }
+
+        p {
+            margin-bottom: 0;
+            display: inline;
+        }
+    }
+}
+
+.acf-block-preview {
+    .ldr-expertise-grid {
+        position: relative;
+    }
+}
