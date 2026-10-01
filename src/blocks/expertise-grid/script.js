@@ -7,19 +7,31 @@ import gsap from 'gsap';
 (function() {
     const ldrExpertiseGrid = (elem) => {
         const el = (elem[0] === undefined) ? elem : elem[0];
-        const block = el.querySelector('.acf-block-preview') ? el.querySelector('.ldr-expertise-grid') : el;
+        const block = el.classList && el.classList.contains('ldr-expertise-grid') ? el : el.querySelector('.ldr-expertise-grid');
+
+        // Block markup not rendered (yet), e.g. ACF preview is still loading
+        if(!block) {
+            return;
+        }
+
         const cardSettings = (block.dataset && block.dataset.cardSettings && JSON.parse(block.dataset.cardSettings));
-        const customSelection = (block.dataset && block.dataset.selectedExpertises && JSON.parse(block.dataset.selectedExpertises)) || [];
-        const excludedExpertises = (block.dataset && block.dataset.excludedExpertises && JSON.parse(block.dataset.excludedExpertises)) || [];
-        const filters = block.querySelector('.ldr-expertise-grid .grid-filter');
-        const filterBtns = filters && filters.querySelectorAll('.ldr-expertise-grid .dropdown-item');
+        const customSelection = (block.dataset && block.dataset.selectedExpertise && JSON.parse(block.dataset.selectedExpertise)) || [];
+        const excludedExpertises = (block.dataset && block.dataset.excludedExpertise && JSON.parse(block.dataset.excludedExpertise)) || [];
+        const filters = block.querySelector('.grid-filter');
+        const filterBtns = filters && filters.querySelectorAll('.dropdown-item');
         const resetFilterBtn = block.querySelector('.reset-filter');
         const copyFilteredResultsBtn = block.querySelector('.copy-filtered-results');
+        const expertiseCategories = (block.dataset && block.dataset.expertiseCategories && JSON.parse(block.dataset.expertiseCategories)) || [];
+        const expertiseType = (block.dataset && block.dataset.expertiseType) || 'all';
         const excludeSticky = (block.dataset && block.dataset.excludeSticky) || 0;
-        const output = block.querySelector('.ldr-expertise-grid .query-output');
-        const loader = output.querySelector('.ldr-expertise-grid .loader');
-        const grid = output.querySelector('.ldr-expertise-grid .grid-items');
-        const postsNumber = (block.dataset) && parseInt(block.dataset.postsNumber) || -1;
+        const output = block.querySelector('.query-output');
+        const loader = output && output.querySelector('.loader');
+        const grid = output && output.querySelector('.grid-items');
+        const postsNumber = (block.dataset) && parseInt(block.dataset.expertiseNumber) || -1;
+
+        if(!output || !grid) {
+            return;
+        }
         const loadMoreBtn = block.querySelector('.load-more');
         let currentPage = 1;
         let currentFilter = 0;
@@ -28,7 +40,7 @@ import gsap from 'gsap';
         const loadMoreExpertises = (el) => {
             currentPage++;
 
-            loader.classList.remove('d-none');
+            loader && loader.classList.remove('d-none');
 
             loadData(currentFilter, excludeSticky, cardSettings, postsNumber, currentPage);
         }
@@ -48,17 +60,19 @@ import gsap from 'gsap';
                     filter: currentFilter,
                     customSelection: customSelection,
                     excludedExpertises: excludedExpertises,
+                    expertiseType: expertiseType,
+                    expertiseCategories: expertiseCategories,
                     cardSettings: cardSettings,
                     excludeSticky: excludeSticky,
                     postsNumber: postsNumber,
                     paged: currentPage,
                 },
                 success: (result) => {
-                    loader.classList.add('d-none');
+                    loader && loader.classList.add('d-none');
                     grid.innerHTML = grid.innerHTML + result;
-                    expertiseCards = [...document.querySelectorAll('.ldr-expertise-grid .ldr-expertise-card')];
+                    expertiseCards = [...grid.querySelectorAll('.ldr-expertise-card')];
 
-                    const cards = [...grid.children].slice(-postsNumber);
+                    const cards = postsNumber > 0 ? [...grid.children].slice(-postsNumber) : [...grid.children];
 
                     gsap.from(cards, {
                         autoAlpha: 0,
@@ -68,6 +82,10 @@ import gsap from 'gsap';
                     expertiseCards.forEach((card) => {
                         const coverImage = card.querySelector('.card-img-top');
                         const cardLink = card.querySelector('.btn');
+
+                        if(!coverImage || !cardLink) {
+                            return;
+                        }
                         
                         cardLink.addEventListener('mouseover', () => {
                             coverImage.classList.add('is-hovered');

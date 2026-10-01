@@ -22,7 +22,7 @@ import Glide from '@glidejs/glide';
         const cards = el.querySelectorAll('.ldr-post-card') || null;
         
         if(glide && (isStatic != 1)) {
-            const slider = new Glide('.ldr-post-slider .glide', {...defaultSettings, ...sliderSettings}).mount();
+            const slider = new Glide(glide, {...defaultSettings, ...sliderSettings}).mount();
 
             if(acfBlockData) {
                 if(acfBlockData.data.field_post_slider_type) {

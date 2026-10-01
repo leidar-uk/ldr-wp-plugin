@@ -50,6 +50,7 @@ class Expertise_Grid_Block {
 
         add_action( 'wp_ajax_load_expertise', [$this, 'load_expertise'] );
         add_action( 'wp_ajax_nopriv_load_expertise', [$this, 'load_expertise'] );
+        add_action( 'enqueue_block_assets', [$this, 'enqueue_editor_styles'] );
         if ( function_exists( 'acf_register_block_type' ) ) {
             $this->ldr_register_acf_block();
             $this->ldr_register_field_group();
@@ -57,6 +58,22 @@ class Expertise_Grid_Block {
             add_action( 'acf/init', [$this, 'ldr_register_acf_block'] );
             add_action( 'acf/init', [$this, 'ldr_register_field_group'] );
         }
+
+    }
+
+    /**
+     * Loads the block styles inside the (iframed) block editor canvas.
+     * ACF only enqueues them when the block is already in the content on load,
+     * so a freshly inserted block would be rendered without the grid layout.
+     * @return void
+     */
+    public function enqueue_editor_styles() {
+
+        if( ! is_admin() ) {
+            return;
+        }
+
+        wp_enqueue_style( 'expertise-grid', $this->block_url . 'style.min.css', [], filemtime( $this->block_dir . 'style.min.css' ) );
 
     }
 
@@ -88,19 +105,46 @@ class Expertise_Grid_Block {
      */
     public function load_expertise() {
 
+        $expertise_number = isset( $_POST['postsNumber'] ) ? (int) $_POST['postsNumber'] : -1;
+
         $args = [
             'post_status' => 'publish',
             'post_type' => 'expertise',
-            'posts_per_page' => ( (int) $_POST['postsNumber'] > -1 ) ? (int) $_POST['postsNumber'] : -1,
+            'posts_per_page' => ( $expertise_number > -1 ) ? $expertise_number : -1,
             'orderby' => 'date',
             'order' => 'DESC',
             // 'ignore_sticky_posts' => 1,
             'paged' => isset( $_POST['paged'] ) ? (int) $_POST['paged'] : 1
         ];
-        $expertise_number = (int) $_POST['postsNumber'];
-        $custom_selection = (array) $_POST['customSelection'];
-        $excluded_expertise = (array) $_POST['excludedExpertises'];
-        $card_settings = (array) $_POST['cardSettings'];
+        $custom_selection = isset( $_POST['customSelection'] ) ? array_map( 'intval', (array) $_POST['customSelection'] ) : [];
+        $excluded_expertise = isset( $_POST['excludedExpertises'] ) ? array_map( 'intval', (array) $_POST['excludedExpertises'] ) : [];
+        $card_settings = isset( $_POST['cardSettings'] ) ? (array) $_POST['cardSettings'] : [];
+        $expertise_type = isset( $_POST['expertiseType'] ) ? sanitize_key( $_POST['expertiseType'] ) : 'all';
+
+        // Show only entries assigned to the selected categories
+        $expertise_categories = isset( $_POST['expertiseCategories'] ) ? array_filter( array_map( 'intval', (array) $_POST['expertiseCategories'] ) ) : [];
+
+        if( ! empty( $expertise_categories ) ) {
+            $args['tax_query'] = [
+                [
+                    'taxonomy' => 'expertise_category',
+                    'field' => 'term_id',
+                    'terms' => $expertise_categories,
+                    'include_children' => true,
+                ],
+            ];
+        }
+
+        // Show only practices or only examples (post meta: expertise_type)
+        if( in_array( $expertise_type, [ 'practice', 'example' ], true ) ) {
+            $args['meta_query'] = [
+                [
+                    'key' => 'expertise_type',
+                    'value' => $expertise_type,
+                    'compare' => '=',
+                ],
+            ];
+        }
 
         if( $expertise_number > 0 ) {
             $args['numberposts'] = $expertise_number;
@@ -223,6 +267,64 @@ class Expertise_Grid_Block {
 
     }
 
+    // Type of expertise to show
+    protected function _acf_field_expertise_grid_expertise_type() {
+
+        return [
+            'key' => 'field_expertise_grid_expertise_type',
+            'label' => __( 'Show', 'ldr' ),
+            'name' => 'expertise_grid_expertise_type',
+            'type' => 'select',
+            'instructions' => __( 'Choose which type of expertise entries to display.', 'ldr' ),
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ],
+            'default_value' => 'all',
+            'multiple' => 0,
+            'choices' => [
+                'all' => __( 'All', 'ldr' ),
+                'practice' => __( 'Practices only', 'ldr' ),
+                'example' => __( 'Examples only', 'ldr' ),
+            ],
+            'allow_null' => 0,
+            'ui' => 0,
+            'return_format' => 'value',
+        ];
+
+    }
+
+    // Expertise categories
+    protected function _acf_field_expertise_grid_categories() {
+
+        return [
+            'key' => 'field_expertise_grid_categories',
+            'label' => __( 'Categories', 'ldr' ),
+            'name' => 'expertise_grid_categories',
+            'type' => 'taxonomy',
+            'instructions' => __( 'Show only expertise from the selected categories. Leave empty to show all.', 'ldr' ),
+            'required' => 0,
+            'conditional_logic' => 0,
+            'wrapper' => [
+                'width' => '',
+                'class' => '',
+                'id' => '',
+            ],
+            'taxonomy' => 'expertise_category',
+            'field_type' => 'multi_select',
+            'allow_null' => 1,
+            'add_term' => 0,
+            'save_terms' => 0,
+            'load_terms' => 0,
+            'return_format' => 'id',
+            'multiple' => 1,
+        ];
+
+    }
+
     // Manually select expertise
     protected function _acf_field_expertise_grid_select_expertise() {
 
@@ -234,11 +336,6 @@ class Expertise_Grid_Block {
             'instructions' => '',
             'conditional_logic' => [
                 [
-                    [
-                        'field' => 'field_expertise_grid_hide_filter',
-                        'operator' => '==',
-                        'value' => 1
-                    ],
                     [
                         'field' => 'field_expertise_grid_exclude_expertise',
                         'operator' => '==empty',

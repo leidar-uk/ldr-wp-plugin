@@ -24,6 +24,10 @@ $custom_selection = get_field( 'expertise_grid_select_expertise' );
 $selected_expertise = ! empty( $custom_selection ) ? " data-selected-expertise='" . json_encode( array_map( function( $n ) { return (int) $n; }, $custom_selection ) ) . "'" : '';
 $omit_expertise = get_field( 'expertise_grid_exclude_expertise' );
 $excluded_expertise = ! empty( $omit_expertise ) ? " data-excluded-expertise='" . json_encode( array_map( function( $n ) { return (int) $n; }, $omit_expertise ) ) . "'" : '';
+$expertise_type = get_field( 'expertise_grid_expertise_type' );
+$expertise_type = in_array( $expertise_type, [ 'practice', 'example' ], true ) ? $expertise_type : 'all';
+$expertise_categories = array_values( array_filter( array_map( 'intval', (array) get_field( 'expertise_grid_categories' ) ) ) );
+$categories_data = ! empty( $expertise_categories ) ? " data-expertise-categories='" . json_encode( $expertise_categories ) . "'" : '';
 $exclude_sticky_expertise = (int) get_field( 'expertise_grid_exclude_sticky_expertise' );
 
 $card_settings = [
@@ -49,7 +53,7 @@ if( ! empty( $block['align'] ) ) {
 }
 
 ?>
-<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>"<?php echo $filtered_data; ?><?php echo $selected_expertise; ?> data-card-settings='<?php echo json_encode( $card_settings ); ?>' <?php echo $excluded_expertise; ?> data-expertise-number="<?php echo $expertise_number; ?>">
+<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $className ); ?>"<?php echo $filtered_data; ?><?php echo $selected_expertise; ?> data-card-settings='<?php echo json_encode( $card_settings ); ?>' <?php echo $excluded_expertise; ?><?php echo $categories_data; ?> data-expertise-number="<?php echo $expertise_number; ?>" data-expertise-type="<?php echo esc_attr( $expertise_type ); ?>">
     <div class="query-output">
         <div class="grid-items"></div>
         <?php if( $expertise_number > 0 ) : ?>

@@ -310,11 +310,20 @@ class Post_Slider_Block {
             'post_status' => 'publish',
             'numberposts' => -1
         ] );
-        $posts_authors = array_map( function( $n ) use( &$authors ) { $authors[] = (int) get_post_meta( $n->ID, 'post_author_select', true )[0]; return null; }, $all_posts );
+        $posts_authors = array_map( function( $n ) use( &$authors ) {
+            $author_id = (int) get_post_meta( $n->ID, 'post_author_select', true );
+            if ( $author_id ) {
+                $authors[] = $author_id;
+            }
+            return null;
+        }, $all_posts );
         $unique_authors = array_unique( $authors );
 
         foreach( $unique_authors as $author_id ) {
-            $choices[$author_id] = get_post( $author_id )->post_title;
+            $author_post = get_post( $author_id );
+            if ( $author_post ) {
+                $choices[$author_id] = $author_post->post_title;
+            }
         }
 
         return [

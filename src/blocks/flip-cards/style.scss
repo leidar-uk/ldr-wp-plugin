@@ -1,0 +1,200 @@
+/**
+ * Block: Flip Cards
+ *
+ */
+
+@import '../../scss/foundation/bootstrap-core';
+
+.ldr-flip-cards {
+    padding: 4rem 0;
+
+    &__grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: 1fr;
+
+        @include media-breakpoint-up(lg) {
+            grid-template-columns: repeat(2, minmax(0, 1fr)); // max 2 columns from 992px up, 1 column below
+        }
+    }
+}
+
+.ldr-flip-card {
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+
+    &:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 4px;
+    }
+
+    // Only the visible face should be able to receive clicks. This is a
+    // safety net alongside the JS click-target check, so links/buttons on
+    // the back only work once the card is actually flipped.
+    &[aria-expanded="true"] {
+        .ldr-flip-card__side--front {
+            pointer-events: none;
+        }
+
+        .ldr-flip-card__side--back {
+            pointer-events: auto;
+        }
+    }
+
+    &__inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+    }
+
+    &__side {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        background-size: cover;
+        background-position: center;
+        border-radius: $border-radius-sm;
+        overflow: hidden;
+        display: flex;
+        align-items: stretch;
+    }
+
+    &__side--front {
+        z-index: 2;
+    }
+
+    &__side--back {
+        transform: rotateY(180deg);
+        background-color: $tertiary;
+        pointer-events: none; // enabled only when flipped, see &[aria-expanded="true"] above
+
+        .ldr-flip-card__overlay {
+            background: none;
+
+            .ldr-flip-card__turnover {
+                align-self: flex-end;
+
+                &::after {
+                    left: 123%;
+                }
+            }
+        }
+    }
+
+    &__overlay {
+        flex: 1;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+        color: inherit;
+        background-color: transparent;
+    }
+
+    &__heading, &__subheading {
+        &:not(.h1) {
+            font-family: $font-family-sans-serif;
+        }
+        &.h1 {
+            font-family: $font-family-serif;
+            font-style: italic;
+        }
+    }
+
+    &__subheading {
+        font-size: $font-size-lg;
+
+        @include media-breakpoint-up(md) {
+            font-size: $font-size-base;
+        }
+
+        @include media-breakpoint-up(lg) {
+            font-size: $font-size-lg;
+        }
+    }
+
+    &__list {
+        margin: 0;
+        padding-left: 1.2rem;
+    }
+
+    &__list-link {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+
+        &:hover,
+        &:focus-visible {
+            text-decoration: none;
+        }
+    }
+
+    &__turnover {
+        position: relative;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            left: -48px;
+            top: -4px;
+            border-radius: 50%;
+            background-color: $white;
+        }
+    }
+
+    &__cta {
+        // The theme's global `a:not(.btn-ldr-primary)::after` underline-bar
+        // hover effect would otherwise leak onto this button, since it
+        // deliberately isn't a `.btn-ldr-primary` (see the colour variants
+        // below). Buttons shouldn't get that link-underline treatment.
+        &::after {
+            display: none !important;
+        }
+
+        &--dark {
+            background-color: $primary;
+            border-color: $primary;
+            color: $white;
+
+            &:hover,
+            &:focus {
+                background-color: $secondary;
+                border-color: $secondary;
+                color: $white;
+            }
+        }
+
+        &--light {
+            background-color: $white;
+            border-color: $white;
+            color: $primary;
+
+            &:hover,
+            &:focus {
+                background-color: $tertiary;
+                border-color: $tertiary;
+                color: $primary;
+            }
+        }
+    }
+}
+
+// Editor
+
+.acf-block-preview {
+    .ldr-flip-cards {
+        max-width: 100%;
+        padding: 2rem 0;
+
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}

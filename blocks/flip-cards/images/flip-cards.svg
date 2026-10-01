@@ -1,0 +1,10 @@
+<svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:none;stroke:#1E1E1E;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st1{fill:none;stroke:#1E1E1E;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+</style>
+<rect x="1" y="4" class="st0" width="14" height="16" rx="2" ry="2"/>
+<path class="st1" d="M17,8c2.8,0,5,2.2,5,5s-2.2,5-5,5c-1.7,0-3.2-0.8-4.1-2.1"/>
+<polyline class="st1" points="17,4 17,8 21,8 "/>
+</svg>

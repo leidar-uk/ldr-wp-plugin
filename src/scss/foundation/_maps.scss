@@ -41,3 +41,13 @@ $typography-sizing: (
     'huge': $spacer * 2,
     'gigant': $spacer * 2.5,
 );
+
+// Smaller versions of the large sizes, applied below 768px (see core/_theme.scss).
+// Keep in sync with the same map in ldr-wp-theme (src/scss/foundation/_maps.scss).
+$typography-sizing-mobile: (
+    'large': $spacer * 1.375,
+    'extra-large': $spacer * 1.5,
+    'x-large': $spacer * 1.5,
+    'huge': $spacer * 1.75,
+    'gigant': $spacer * 2,
+);

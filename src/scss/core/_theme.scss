@@ -285,6 +285,14 @@ main {
 	}
 }
 
+@media (max-width: 767.98px) {
+	@each $name, $size in $typography-sizing-mobile {
+		.has-#{$name}-font-size {
+			font-size: $size!important;
+		}
+	}
+}
+
 // Preview
 
 .acf-block-preview {

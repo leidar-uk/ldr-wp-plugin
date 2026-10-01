@@ -4,10 +4,24 @@
  */
 
 @import '../../scss/foundation/bootstrap-core';
-@import '../../scss/core/theme';
 
 .ldr-box {
     position: relative;
+
+    // Horizontal padding follows the global --ldr-gutter token (defined in
+    // the theme's theme.json). The ACF "Padding" option outputs Bootstrap
+    // classes on both the wrapper and the inner container, so the wrapper's
+    // horizontal padding is cancelled to avoid doubling it.
+    &.px-4:has(> .container.px-4) {
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    > .container.px-4 {
+        padding-right: var(--ldr-gutter, 1rem) !important;
+        padding-left: var(--ldr-gutter, 1rem) !important;
+    }
+
     background-color: $gray-300;
     background-repeat: no-repeat;
     background-position: center;
